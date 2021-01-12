@@ -175,5 +175,3 @@ while game_on:
         print("\n")
     if play_again == "N":
         break
-
-
