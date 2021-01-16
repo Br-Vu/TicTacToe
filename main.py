@@ -3,8 +3,7 @@ import random
 import time
 
 __author__ = "Brandon"
-__version__ = "0.1.0"
-
+__version__ = "0.1.1"
 
 def display_board():
     """
@@ -26,12 +25,14 @@ def player_input():
         if choice == "X":
             player1 = "X"
             player2 = "O"
+            break
         elif choice == "O":
             player1 = "O"
             player2 = "X"
+            break
         else:
             print("Invalid selection, try again ... ")
-        return player1, player2
+    return player1, player2
 
 
 def place_marker(board, marker, position):
@@ -152,8 +153,10 @@ while game_on:
         chosen_space = player_choice(gameBoard)
         place_marker(gameBoard, p1, chosen_space)
         if win_check():
+            print("Game over! Look who won ... ")
             break
         if board_full(gameBoard):
+            print("Game over! Board is full ...")
             break
         display_board()
 
@@ -162,12 +165,16 @@ while game_on:
         chosen_space = player_choice(gameBoard)
         place_marker(gameBoard, p2, chosen_space)
         if win_check():
+            print("Game over! Look who won ... ")
             break
-        if board_full(gameBoard):
+        elif board_full(gameBoard):
+            print("Game over! Board is full ...")
             break
+        else:
+            pass
         display_board()
 
-    print("Game over! Look who won ... ")
+
     display_board()
     play_again = replay()
     if play_again == "Y":
